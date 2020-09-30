@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Comment;
+use App\Post;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements JWTSubject
@@ -46,4 +48,15 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims(){
         return [];
     }
+
+//post and comments have one to many rltnship
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+    
 }
