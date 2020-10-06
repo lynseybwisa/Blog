@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,7 @@ class CommentsController extends Controller
     public function create(Request $request){
     	$comment = new Comment;
     	$comment->user_id = Auth::user()->id;
-    	$comment->post_id = $request_id;
+    	$comment->post_id = $request->id;
     	$comment->comment = $request->comment;
     	$comment->save();
 
