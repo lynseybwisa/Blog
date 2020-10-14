@@ -43,7 +43,6 @@ class AuthController extends Controller
     	try{
             
             $user->email = $request->email;
-            $user->name= $request->name;
             $user->password = $encryptedPass;
             $user->save();
             return $this->login($request);
